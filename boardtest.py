@@ -11,7 +11,7 @@ def aivshuman(board, current_player):
 
     def humanplay(board, current_player):
         print("Human, its your turn")
-        return ask_coords()
+        return ask_coords(board)
     
     def winplay(board, current_player):
         for combo in winning_combos:
@@ -57,7 +57,8 @@ def aivshuman(board, current_player):
         return random.choice(valid_moves)
     
 #use for humanvshuman mode, but also referenced in aivshuman function for humanplay
-def ask_coords():
+
+def ask_coords(board):
     while True:
         try:
             coords = int(input("Pick your coords   "))
@@ -71,7 +72,6 @@ def ask_coords():
         
         else:
             return coords
-
 def make_move(b, coords, current_player):
     if current_player == 1:
         b[coords] = "X"
@@ -115,11 +115,11 @@ def check_win(b):
 
 def greet():
     print(
-        "\nWelcome to Tic Tac Toe!!! \nPlayer 1 is X \nPlayer 2 is O \nTo make a move, type the number of the square you want to place your piece in. \nThe squares are numbered as follows: "
+        "\nWelcome to Tic Tac Toe!!! \nPlayer 1 is X \nPlayer 2 is O \nTo make a move, type the number of the square you want to place your piece in. \nThe squares are numbered as follows:\n+---+---+---+ \n| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |\n+---+---+---+"
     )
 
+
 greet()
-print("+---+---+---+ \n| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |\n+---+---+---+")
 board = init_board()
 current_player = 1
 gamecheck = 0
