@@ -1,4 +1,3 @@
-
 winning_combos = [
     [1, 2, 3], [4, 5, 6], [7, 8, 9],  # Horizontal rows
     [1, 4, 7], [2, 5, 8], [3, 6, 9],  # Vertical columns
@@ -60,11 +59,16 @@ def aivshuman(board, current_player):
 #use for humanvshuman mode, but also referenced in aivshuman function for humanplay
 def ask_coords():
     while True:
-        coords = int(input("Pick your coords   "))
-
-        if coords < 1 or coords > 9 or board[coords] != " ":
+        try:
+            coords = int(input("Pick your coords   "))
+        except ValueError:
             print("Thats not a valid move, try again")
             continue
+
+        if coords < 1 or coords > 9 or board[coords] != " ":
+            print("Pick an empty square between 1 and 9, try again")
+            continue
+        
         else:
             return coords
 
