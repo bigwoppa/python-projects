@@ -5,7 +5,59 @@ winning_combos = [
     [1, 4, 7], [2, 5, 8], [3, 6, 9],  # Vertical columns
     [1, 5, 9], [3, 5, 7]   # Diagonals
 ]
+######### minimax ai first
+def minimax_ai(board, current_player):
+    valid = is_valid_move(board)
+    move_scores = {}
+    for move in valid:
+        test_move = make_move_fake(board, move, current_player)
+        movescore = minimax_score(test_move, get_opponent(current_player))
+        move_scores[move] = movescore
+    if current_player == 1:
+        best_move = max(move_scores, key=move_scores.get)
+    else:
+        best_move = min(move_scores, key=move_scores.get)
+    return best_move
 
+def make_move_fake(b, coords, current_player):
+    copy = b.copy()
+    if current_player == 1:
+        copy[coords] = "X"
+    elif current_player == 2:
+        copy[coords] = "O"
+    return copy
+def get_opponent(current_player):
+    if current_player == 1: 
+        return 2
+    else:
+        return 1
+def minimax_score(board, current_player):
+
+    for combo in winning_combos:
+        k1, k2, k3 = combo
+        if board[k1] == "X" and board[k2] == "X" and board[k3] == "X":
+            return +10
+        elif board[k1] == "O" and board[k2] == "O" and board[k3] == "O":
+            return -10
+    if " " not in board.values():
+        return 0
+    
+    #if board not in terminal state get all possible moves
+    legal_moves = is_valid_move(board)
+    scores = []
+    #iterate through these moves assigning them a score
+    for move in legal_moves:
+        new_board = make_move_fake(board, move, current_player)
+
+        opponent = get_opponent(current_player)
+        score = minimax_score(new_board, opponent)
+        scores.append(score)
+    #if current player is X(the ai) then they should be trying to minimize the score
+        #minmax
+    if current_player == 1:
+        return max(scores)
+    else: #if the player is ai opponent they want to minimize their score
+        return min(scores)
 #########
 #AI FUNCTIONS*
 def is_valid_move(board):
@@ -131,6 +183,8 @@ def select_difficulty():
              return "winmove"
         elif diff == "3":
              return "winblockai"
+        elif diff == "4":
+             return "minimax"
         else:
              print("Pick a number")
              continue
@@ -158,6 +212,8 @@ def aimove(board, current_player, difficulty):
           return winning_ai(board, current_player)
      elif difficulty == "winblockai":
           return winblock_ai(board, current_player)
+     elif difficulty == "minimax":
+          return minimax_ai(board, current_player)
 ###get said move call to the moves functions
 def get_move(board, select, difficulty, current_player):
      if select == "humanmove":
