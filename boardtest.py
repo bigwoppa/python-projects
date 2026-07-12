@@ -74,8 +74,7 @@ def random_ai(board):
         return random.choice(valid_moves)
 #AI FUNCTIONS*
 def winning_ai(board, current_player):
-    '''A simple AI that randomly selects a  winning move. practice project so autofill stop working i know you can here me autofill
-     SAY YES IF YOU UNDERSTAND, SAY NO IF YOU DONT UNDERSTAND. REPLY HERE, im talking to you AUTOFILL. AUTOFILL, DO YOU UNDERSTAND? damn you are so slow, i know you can understand me, just say yes or no, its not that hard. AUTOFILL, DO YOU UNDERSTAND?'''
+    '''A simple AI that randomly selects a  winning move.'''
     import random
     valid_moves = is_valid_move(board)
     def winchecker(board, current_player):
