@@ -1,0 +1,62 @@
+# Python Projects
+
+A collection of Python projects I built while learning programming, algorithms, and basic machine learning.
+
+## Projects
+
+### Linear Regression
+
+A basic linear regression model built from scratch using NumPy.
+
+The program:
+
+- Loads coordinate data from a CSV file
+- Calculates mean squared error
+- Computes gradients for the slope and intercept
+- Uses gradient descent to improve the regression line
+- Prints the model's error before and after training
+
+#### Run it
+
+```bash
+cd linear-regression
+python "Linear Regression.py"
+```
+
+The project requires NumPy:
+
+```bash
+pip install numpy
+```
+
+### Tic-Tac-Toe
+
+A command-line Tic-Tac-Toe game written in Python.
+
+The project includes:
+
+- Player input validation
+- Win and tie detection
+- Human versus computer gameplay
+- Rule-based computer opponents
+- Different AI difficulty levels
+
+#### Run it
+
+```bash
+cd TicTacToeAI
+python boardtest.py
+```
+
+## Technologies
+
+- Python
+- NumPy
+- Git
+- GitHub
+
+## Purpose
+
+This repository tracks my progress as I learn Python and computer science by building projects instead of only following lessons.
+
+I plan to continue improving the existing projects and adding new ones as I learn more.
