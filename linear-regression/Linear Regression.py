@@ -1,4 +1,6 @@
 from numpy import *
+import os
+
 def compute_error_for_line_given_points(b, m, points):
     #initialize the total error to 0
     totalError = 0
@@ -46,7 +48,7 @@ def step_gradient(b_current, m_current, points, learningRate):
 
 def run():
     # Load the data
-    points = genfromtxt('data.csv', delimiter=',')
+    points = genfromtxt(os.path.join(os.path.dirname(__file__), 'data.csv'), delimiter=',')
 
     # Step 2: - define our hyperparameters
     #how fast should the model convert
